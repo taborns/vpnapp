@@ -22,7 +22,7 @@ def scrapVPNS(url):
         if line_count < 3 or len(row) != 15:
             continue
         else:
-            hostname, ip, score, ping, speed, country, country_short, numVpnSessions, uptime, total_users, total_traffic, log_type, message, config_data = row 
+            hostname, ip, score, ping, speed, country, country_short, numVpnSessions, uptime, total_users, total_traffic, log_type, operator, message, config_data = row 
             try:
                 country = models.Country.objects.get(short=country_short)
             except:
