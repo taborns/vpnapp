@@ -26,6 +26,7 @@ class CountryView( generics.ListAPIView ):
 
     serializer_class = serializers.CountrySerializer 
     queryset = models.Country.objects.all() 
+    pagination_class = None
     
 
 class RandomVPNView( generics.ListAPIView):
