@@ -7,7 +7,7 @@ def scrapVPNS(url):
     headers = {
     'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
     }
-    response = requests.get('http://localhost/vpndata.csv')
+    response = requests.get(url)
 
     csv_reader = csv.reader(StringIO(response.text), delimiter=',')
     #csv_reader = csv.reader(ftpstream.read().decode('utf-8'))  # with the appropriate encoding 
@@ -22,7 +22,7 @@ def scrapVPNS(url):
         if line_count < 3 or len(row) != 15:
             continue
         else:
-            hostname, ip, score, ping, speed, country, country_short, numVpnSessions, uptime, total_users, total_traffic, log_type, operator, message, config_data = row 
+            hostname, ip, score, ping, speed, country, country_short, numVpnSessions, uptime, total_users, total_traffic, log_type, message, config_data = row 
             try:
                 country = models.Country.objects.get(short=country_short)
             except:
@@ -40,7 +40,6 @@ def scrapVPNS(url):
                 totalUsers = total_users,
                 totalTraffic = total_traffic,
                 log_type = log_type,
-                operator = operator,
                 config_data = config_data
 
             )

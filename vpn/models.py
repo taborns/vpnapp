@@ -18,7 +18,6 @@ class VPN(models.Model):
     totalUsers = models.CharField(max_length=50)
     totalTraffic = models.CharField(max_length=50)
     log_type = models.CharField(max_length=200)
-    operator = models.CharField(max_length=200)
     config_data = models.TextField()
 
     class Meta:
