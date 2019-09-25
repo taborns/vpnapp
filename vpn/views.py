@@ -4,6 +4,8 @@ from rest_framework import generics,views
 from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
 
+API_URL = "http://www.vpngate.net/api/iphone/"
+
 # Create your views here.
 class VPNListView( generics.ListAPIView ):
 
@@ -44,5 +46,5 @@ class VPNScrapper( views.APIView):
     queryset = models.VPN.objects.all() 
 
     def  get(self, request, format=None):
-        scrapper.scrapVPNS('/Users/mac/Desktop/vpndata.csv')
+        scrapper.scrapVPNS(API_URL)
         return Response('SCRAP DONE')
